@@ -1,0 +1,67 @@
+video: 
+	https://www.youtube.com/watch?v=D4wYyPdK4Cw
+	https://www.youtube.com/watch?v=Z478ODY4ceQ
+	https://www.youtube.com/watch?v=FwMwO8pXfq0 (used some extra command)
+
+-mongodb download for windows
+
+-then install the app:
+	-select type: complete
+	-select service configaration: run service as network service user
+	-install mongodb compass
+
+-create folder in c drive c:/data/db
+
+-path add to environment variable of "Mongodb/server/4.4/bin/"
+
+-then open cmd and run this command
+	-mongod
+
+-then open another cmd and run this command
+	-mongo
+	-show dbs
+	-some extra commad to create db, tabel and shows tabel data:
+		-show dbs
+		-use template_db
+		-db.admin.insert({"name":"admin","password":"12345"})
+		-show dbs
+		-show collectios
+		-db.admin.find()
+		-db.admin.find().pretty()
+		-db.admin.findOne()
+
+-then see also dbs in compass app
+
+
+Example===>
+
+blog:
+  https://www.geeksforgeeks.org/how-to-connect-mongodb-server-with-node-js/
+  https://www.geeksforgeeks.org/login-form-using-node-js-and-mongodb/?ref=leftbar-rightbar
+  https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/?ref=leftbar-rightbar
+
+-create a folder, then open cmd in this folder and run this command
+	npm install mongodb --save
+
+-create a file server.js and write this code
+	// Module calling
+	const MongoClient = require("mongodb");
+  
+	// Server path
+	const url = 'mongodb://localhost:27017/';
+  
+	// Name of the database
+	const dbname = "conFusion";
+	  
+	MongoClient.connect(url, (err,client)=>{
+    		if(!err) {
+        	console.log("successful connection with the server");  
+    	}
+    	else
+        	console.log("Error in the connectivity");
+	});
+
+-then run this command in cmd
+	node server.js
+
+	

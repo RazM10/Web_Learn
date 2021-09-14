@@ -1,0 +1,23 @@
+Tutorial link: https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
+
+1.
+To initial a project and install package.json command
+    npm init
+
+2'
+To install dependence command
+    npm i express mongoose ejs
+
+3.
+To install dependence as developent purpose command
+    npm i --save-dev nodemon detenv
+
+3.
+A dependence uninstall command
+    npm uninstall body-parser
+
+4.
+node server.js == npm run start
+"scripts": {
+  "start": "server.js"
+},

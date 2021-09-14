@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Edit | Todo</title>
+
+    <style>
+        body{
+            background-color: #164072;
+        }
+        .navbar-inverse {
+            background-color: #DDBE15;
+            border-color: #164072;
+        }
+        .textColor{
+            color: #0b192b !important;
+        }
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .btn-primary {
+            color: #0b192b;
+            background-color: #DDBE15;
+            margin-top: 5px;
+            width: 90px;
+            height: 36px;
+            border-color: #2e6da4;
+        }
+        .form-control {
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="container">
+            <div class="navbar-header">
+                <span class="navbar-brand textColor">Todo</span>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+                <li><a href="/user/profile" class="textColor"><span class="glyphicon glyphicon-user" style="color: #2F9A48;"></span> <%= name %></a></li>
+                <li>
+                    <form style="margin-top: 8px;" action="/user/logout?_method=DELETE" method="POST">
+                        <button type="submit" class="btn textColor" style="background-color: #DDBE15;"><span class="glyphicon glyphicon-log-out"></span> Log Out</button>
+                    </form>
+                </li>
+          </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <form id="form" action="/user/taskUpdatePage/" method="POST">
+                    <div class="form-group">
+                        <label for="task" style="color: #DDBE15;font-size: 30px;">Edit your task</label>
+                        <input type="text" class="form-control" name="task" id="task" placeholder="Task" value="<%= todoName %>">
+                        <button type="submit" class="btn btn-primary" style="background-color: #DDBE15;">Update</button><br><br><br><br>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+
+    <!-- <h1>Edit</h1>
+    <h2>Hi <%= name %></h2>
+    <form action="/user/logout?_method=DELETE" method="POST">
+        <button type="submit">Log Out</button>
+    </form>
+    <br><br><br>
+    <form action="/user/taskUpdatePage/" method="POST">
+        <div>
+            <label for="task">Todo</label>
+            <input type="text" name="task" id="task" value="<%= todoName %>">
+        </div>
+        <button type="submit">Update</button>
+    </form> -->
+</body>
+</html>

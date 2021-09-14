@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Todo</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #164072;
+        }
+        h3{
+            color: #164072 !important;
+            font-weight: bold;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+        h4{
+            color: #164072 !important;
+            font-weight: bold;
+        }
+        label{
+            color: #164072 !important;
+        }
+        #login-column{
+            background-color: #DDBE15;
+            margin-top: 60px;
+            padding: 50px;
+            margin-bottom: 100px;
+            border-radius: 8px;
+        }
+        @media only screen and (min-width: 768px) and (max-width: 990px) {
+            #login-column{
+                padding: 50px 15px 50px 15px;
+                /* padding-top: 50px;
+                padding-bottom: 50px; */
+            }
+        }
+        @media only screen and (max-width: 574px) {
+            #login-column{
+                margin-right: 20px;
+                margin-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-4">
+                        <form id="login-form" action="/user/login" method="post">
+                            <h4 class="text-center">Todo</h4>
+                            <h3 class="text-center">Sign in</h3>
+                            <div class="form-group">
+                                <p style="color: red;">
+                                    <% if (messages.error) { %>
+                                        <%= messages.error %>
+                                    <% } %>
+                                </p>
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" style="background-color:#333333 !important" value="Login">
+                            </div>
+                            <div id="register-link" class="text-right">
+                                <a href="/user/register" style="color:#164072 !important">Register here</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

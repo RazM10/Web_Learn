@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Todo</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #164072;
+        }
+        h3{
+            color: #164072 !important;
+            font-weight: bold;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+        h4{
+            color: #164072 !important;
+            font-weight: bold;
+        }
+        label{
+            color: #164072 !important;
+        }
+        #login-column{
+            background-color: #DDBE15;
+            margin-top: 60px;
+            padding: 50px;
+            margin-bottom: 100px;
+            border-radius: 8px;
+        }
+        @media only screen and (min-width: 768px) and (max-width: 990px) {
+            #login-column{
+                padding: 50px 15px 50px 15px;
+                /* padding-top: 50px;
+                padding-bottom: 50px; */
+            }
+        }
+        @media only screen and (max-width: 574px) {
+            #login-column{
+                margin-right: 20px;
+                margin-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <table>
+            <% for(var i = 0; i < userArray.length; i++){ %>
+                <tr>
+                    <td>
+                        <div class="container">
+                            <div class="row" style="color: aliceblue;">
+                                <div class="col-md-4" style="margin-left: 9px;">
+                                    <%= userArray[i].email %>
+                                </div>
+                                <div class="col-md-4" style="margin-left:30%;">
+                                    <%= userArray[i].name %>
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <!-- <td><%= userArray[i].name %></td> -->
+                </tr>
+            <% } %>
+        </table>
+    </div>
+
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <form id="form" action="/euser/update" method="POST">
+                    <div class="form-group">
+                        <label for="todo" style="color: #DDBE15;font-size: 30px;">Enter User name for update</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter User name for update"><br>
+                        <input type="text" class="form-control" name="newName" id="newName" placeholder="Enter New User name for update"><br>
+                        <button type="submit" class="btn btn-primary" style="background-color: #DDBE15;">Update</button>
+                        <br><br><br><br>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div> -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <form id="form" action="/euser/update2?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <input type="hidden" name="hiddenName" value="<%= userArray[0]['name']%>">
+                        <label for="todo" style="color: #DDBE15;font-size: 30px;">Enter User name for update</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter User name for update"><br>
+                        <input type="text" class="form-control" name="newName" id="newName" placeholder="Enter New User name for update"><br>
+                        <button type="submit" class="btn btn-primary" style="background-color: #DDBE15;">Update</button>
+                        <br><br><br><br>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+
+    <form action="/euser/logout?_method=DELETE" method="POST">
+        <button type="submit">Log Out</button>
+    </form>
+
+    <script>
+        console.log("");
+    </script>
+
+</body>
+</html>

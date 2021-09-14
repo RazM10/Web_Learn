@@ -1,0 +1,22 @@
+-Tuitorial
+	https://www.youtube.com/watch?v=qYwLOXjAiwM
+-Download 64bit 
+	https://nodejs.org/en/download/
+-Then install
+-check version in cmd after installation
+	node -v
+-Update node package manager
+	npm install npm --global
+-create file index.js in folder. write following code
+	var http = require('http');
+	http.createServer(function(req,res){
+    	    res.write("Hello from server");
+    	    res.end();
+	}).listen(3000);
+-Then in terminal run following command to run this file
+	node index.js
+-Then in browser past the link for localhost
+	http://localhost:3000/
+
+
+
