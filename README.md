@@ -1,8 +1,8 @@
 # Node-learn
 
-[Ejs](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/EJS.md)
-[Html_Css](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/HTML_CSS.md)
-[Js](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/JS.md)
+[Ejs](https://github.com/RazM10/Web_Learn/blob/master/EJS.md)
+[Html_Css](https://github.com/RazM10/Web_Learn/blob/master/HTML_CSS.md)
+[Js](https://github.com/RazM10/Web_Learn/blob/master/JS.md)
 
 ## Table of contents
 - [Node js intallation instructions](#node-js-intallation-instructions)
@@ -15,7 +15,7 @@
 
 ## Node js intallation instructions
 
-[Txt File](https://github.com/RazMunir/Flutter-learn/tree/main/cheatsheet_nodejs/files/node-install-step.txt)
+[Txt File](https://github.com/RazM10/Web_Learn/blob/master/files/node-install-step.txt)
 
 ## npm instuction for initialize project
 
@@ -126,7 +126,7 @@ router.get('/allUsers', (req,res) => {
 
 ## MongoDb intallation instructions
 
-[Txt File](https://github.com/RazMunir/Flutter-learn/tree/main/cheatsheet_nodejs/files/mongodb-install.txt)
+[Txt File](https://github.com/RazM10/Web_Learn/blob/master/files/mongodb-install.txt)
 
 Model demo
 
@@ -179,11 +179,11 @@ userType: {type: String, enum: ['user', 'admin'], default: 'user']}
 
 ## Node js express mongodb restful crud api
 
-[Files](https://github.com/RazMunir/Flutter-learn/tree/main/cheatsheet_nodejs/files/node-js-express-mongodb-restful-crud-api)
+[Files](https://github.com/RazM10/Web_Learn/blob/master/files/node-js-express-mongodb-restful-crud-api)
 
 ## Jwt token for login
 
-[Files](https://github.com/RazMunir/Flutter-learn/tree/main/cheatsheet_nodejs/files/node-js-express-mongodb-restful-crud-api/jwt)
+[Files](https://github.com/RazM10/Web_Learn/blob/master/files/node-js-express-mongodb-restful-crud-api/jwt)
 
 ```
 npm install jsonwebtoken

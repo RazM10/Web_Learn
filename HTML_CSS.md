@@ -1,8 +1,8 @@
 # Htnl-Css-learn
 
-[Read_Me](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/README.md)
-[Ejs](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/EJS.md)
-[Js](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/JS.md)
+[Read_Me](https://github.com/RazM10/Web_Learn/blob/master/README.md)
+[Ejs](https://github.com/RazM10/Web_Learn/blob/master/EJS.md)
+[Js](https://github.com/RazM10/Web_Learn/blob/master/JS.md)
 
 ## Table of contents
 - [Menu page finding](#menu-page-finding)
@@ -12,9 +12,9 @@
 - Adding scrolling in sidebar menu by setting 'overflow: auto;' in '.wrapper .sidebar' class design 
 - Also remove scrollbar showing side of sidebar menu by adding '.wrapper .sidebar::-webkit-scrollbar' style 
 
-[Files](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/files/scrolling.html)
+[Files](https://github.com/RazM10/Web_Learn/blob/master/files/scrolling.html)
 
-<img height="380px" src="https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/images/scrolling.PNG">
+<img height="380px" src="https://github.com/RazM10/Web_Learn/blob/master/images/scrolling.PNG">
 
 ```
 .wrapper .sidebar{

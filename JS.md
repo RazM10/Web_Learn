@@ -1,8 +1,8 @@
 # Htnl-Css-learn
 
-[Read_Me](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/README.md)
-[Ejs](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/EJS.md)
-[Html_Css](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/HTML_CSS.md)
+[Read_Me](https://github.com/RazM10/Web_Learn/blob/master/README.md)
+[Ejs](https://github.com/RazM10/Web_Learn/blob/master/EJS.md)
+[Html_Css](https://github.com/RazM10/Web_Learn/blob/master/HTML_CSS.md)
 
 ## Table of contents
 - [Add litener for adding and removing class](#add-litener-for-adding-and-removing-class)

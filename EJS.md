@@ -1,8 +1,8 @@
 # Ejs-learn
 
-[Read_Me](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/README.md)
-[Html_Css](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/HTML_CSS.md)
-[Js](https://github.com/RazMunir/Flutter-learn/blob/main/cheatsheet_nodejs/JS.md)
+[Read_Me](https://github.com/RazM10/Web_Learn/blob/master/README.md)
+[Html_Css](https://github.com/RazM10/Web_Learn/blob/master/HTML_CSS.md)
+[Js](https://github.com/RazM10/Web_Learn/blob/master/JS.md)
 
 ## Table of contents
 - [Setup Ejs](#setup-ejs)
@@ -15,7 +15,7 @@
 
 ## Setup Ejs
 
-[Demo Project](https://github.com/RazMunir/Flutter-learn/tree/main/cheatsheet_nodejs/files/ejs_test)
+[Demo Project](https://github.com/RazM10/Web_Learn/blob/master/files/ejs_test)
 
 Install ejs and write following in app.js files to get access of ejs tamplate & css/js file
 
