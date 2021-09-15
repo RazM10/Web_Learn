@@ -1,40 +1,9 @@
-# Ejs-learn
-
-[Read_Me](https://github.com/RazM10/Web_Learn/blob/master/README.md)
-[Html_Css](https://github.com/RazM10/Web_Learn/blob/master/HTML_CSS.md)
-[Js](https://github.com/RazM10/Web_Learn/blob/master/JS.md)
-
-## Table of contents
-- [Setup Ejs](#setup-ejs-instructions)
-- [To store data locally](#to-store-data-locally)
-- [Setup Ejs](#setup-ejs)
-- [Add css and js files](#add-css-add-js-files)
-- [Use of anchor tag](#use-of-anchor-tag)
-- [Use of for loop-if else statement and data pass](#use-of-for-loop-if-else-statement-and-data-pass)
-- [Folder traverse](#folder-traverse)
-- [Data pass from ui to server](#data-pass-from-ui-to-server)
-- [Token pass with header](#token-pass-with-header)
-- [Locally data store in browser](#locally-data-store-in-browser)
-
-## Setup ejs instructions
-
-[Cheat_Sheet](https://github.com/RazM10/Web_Learn/blob/master/files/cheetsheet_ejs.txt)
-
-[Dashboard_template_asset_files_deleted](https://github.com/RazM10/Web_Learn/blob/master/files/admin_template_integration)
-
-[Todo_Demo_Project_also_contains_fetch_routes](https://github.com/RazM10/Web_Learn/blob/master/files/ejs_test)
-
-- project setup
-```
+0.
 npm init
 npm install express ejs 
 npm install express-ejs-layouts // if you need a common layout.ejs file
 npm install nodemon --save-dev
-```
 
-- server.js ,without common layout.ejs
-
-```
 --- server.js ,without common layout.ejs---
 const express = require('express');
 const app = express();
@@ -54,11 +23,8 @@ app.get('/', async (req,res)=>{
 app.listen(3000, (req, res) => {
     console.log("Listing to port 3000")
 });
-```
 
-- server.js with layout.ejs
 
-```
 --- server.js with layout.ejs ---
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
@@ -81,11 +47,8 @@ app.get('/', async (req,res)=>{
 app.listen(3000, (req, res) => {
     console.log("Listing to port 3000")
 });
-```
 
-- server.js, with layout.ejs. another way
 
-```
 --- server.js, with layout.ejs. another way ---
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
@@ -108,167 +71,45 @@ app.get('/', async (req,res)=>{
 app.listen(3000, (req, res) => {
     console.log("Listing to port 3000")
 });
-```
 
-- use default custom layout without default layout.ejs
 
-```
-*** use default custom layout without default layout.ejs ***
+	*** use default custom layout without default layout.ejs ***
 		const loginView = (req, res) => {
 	    		res.render('login.view.ejs', {layout: 'loginLayout.ejs'});
 		}
-```
 
-## To store data locally
 
-- install
-```
+0.1.
+// to store data locally
 npm install node-localstorage
-```
 
-- Add a folder 'scracth' in root folder. Then do follow next instructions
+// create a folder 'scracth' in root folder
+then do follow next instructions
 
-- add this in every file, where it is used
-```
+//add this in every file, where it is used
 const {LocalStorage}  = require('node-localstorage');
 const localstorage = new LocalStorage('./scracth');
-```
 
-- use for save data
-```
+// use for save data
 const obj = {
     email: req.body.email,
     password: req.body.password
 };
 localstorage.setItem('user', JSON.stringify(obj));
-```
 
-- use for get data
-```
+// use for get data
 const data = localstorage.getItem('user') !== null ? JSON.parse(localstorage.getItem('user')) : null;
   if (data !== null) {
     res.render('home');        
   }else {
     res.redirect('/login');
 }
-```
 
-- use for remove data
-```
+// use for remove data
 localstorage.removeItem('user');
-```
 
-## Setup Ejs
-
-[Demo Project](https://github.com/RazM10/Web_Learn/blob/master/files/ejs_test)
-
-Install ejs and write following in app.js files to get access of ejs tamplate & css/js file
-
-```
-app.set('view-engine','ejs');
-
-//middleware
-app.use(express.json());
-app.use(express.static(__dirname + '/'));
-app.use(express.urlencoded({extended: false}));
-app.use('/user', usersRoute);
-app.use('/euser', eUsersRoutes);
-```
-
-## Add css add js files
-
-```
-// Add css file in ejs template. keep file in: root/css/bootstrap.min.css
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-
-// Add js file in ejs template. keep file in: root/js/main.js
-<script src="../js/main.js"></script>
-```
-
-## Use of anchor tag
-
-Also you can pass data from route to ejs file.
-
-```
-<a href="/user/profile" class="textColor"><%= name %></a>
-
-// Route. it will navigate you to profile page
-router.get('/profile', checkAuthenticated,(req,res)=>{
-    res.render('profile.ejs',{name: req.user.name, email: req.user.email, address: req.user.address});
-});
-```
-
-```
-router.get('/login',checkNotAuthenticated,(req,res)=>{
-    getAllUser();
-    res.render('login.ejs');
-});
-
-<div id="register-link" class="text-right">
-	<a href="/user/login" style="color:#164072 !important">Already Registered?</a>
-</div>
-```
-
-## Use of for loop-if else statement and data pass
-
-```
-// Open Home page, when start server
-router.get('/', async (req,res)=>{
-    const users = await User.find();
-
-    res.render('index.ejs', {
-        projectName: "Todo",
-        pageTitle: "Sign In",
-        userArray: users
-    });
-});
-
-// For loop to iterate array of data
-<table>
-	<% for(var i = 0; i < userArray.length; i++){ %>
-		<tr>
-			<td>
-				<div class="container">
-					<div class="row" style="color: aliceblue;">
-						<div class="col-md-4" style="margin-left: 9px;">
-							<%= userArray[i].email %>
-						</div>
-						<div class="col-md-4" style="margin-left:30%;">
-							<%= userArray[i].name %>
-						</div>
-						<div class="col-md-4"></div>
-					</div>
-				</div>
-			</td>
-			<!-- <td><%= userArray[i].name %></td> -->
-		</tr>
-	<% } %>
-</table>
-
-// Use of conditional statement in ejs file
-<p style="color: red;">
-    <% if (failMsg !== " ") { %>
-        <%= failMsg %>
-    <% } %>
-</p>
-```
-
-Data show in js script console
-
-```
-<script> 
-    console.log("hello")
-    console.log("<%= projectName %>");
-    // console.log("<%= JSON.stringify(projectName) %>");
-</script>
-```
-
-## Form data post as put-delete
-
-Route for post data to save in database by data passing form to route.
-
-```
-// Route for post data to save in database
+1.
+// Route for post data to save in bd
 router.post('/register',checkNotAuthenticated, async(req,res)=>{
 
     const getedUser= usersArray.find(user => user.email === req.body.email);
@@ -294,7 +135,6 @@ router.post('/register',checkNotAuthenticated, async(req,res)=>{
         res.render('register.ejs', { r_message: "Todo", failMsg: req.body.email+" is already exist." });
     }
 });
-
 
 // Form for Post route to save data
 <div id="login">
@@ -337,20 +177,14 @@ router.post('/register',checkNotAuthenticated, async(req,res)=>{
         </div>
     </div>
 </div>
-```
 
-Setup method-override to convert Post request to delete/put request.
 
-```
+
 // use this middleware in route page, otherwise will not work 
 // middleware for to convert ejs's POST request to router's DELETE/PUT request
 const methodOverride = require('method-override');
 router.use(methodOverride('_method'));
-```
 
-For update route
-
-```
 // update route
 router.put('/update2', async (req, res)=> {
     var hiddenName = req.body.hiddenName;
@@ -391,129 +225,104 @@ router.put('/update2', async (req, res)=> {
         <div class="col-lg-2"></div>
     </div>
 </div>
-```
 
-For delete route
 
-```
 // Delete route
 router.delete('/logout', (req, res) => {
     console.log("From Delete route");
     res.redirect('/euser/taskShow');
 });
 
-
 // Form For delete route 
 <form action="/euser/logout?_method=DELETE" method="POST">
     <button type="submit">Log Out</button>
 </form>
-```
 
-## Install specific version of package
 
-```
-npm install mongoose@6.0.4
-```
+2.
+// Open Home page, when start server
+router.get('/', async (req,res)=>{
+    const users = await User.find();
 
-- TextField undefined error removed by installing 5.9.17 version of mongoose
-
-```
-npm install mongoose@5.9.17
-```
-
-## Token pass with header
-
-- Receive
-```
-// let token = req.headers["authorization"];
-let token = req.get('Authorization');
-```
-
-- Send
-```
-// add jquery library
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-// a post fetch route for edite data
-editBtn.click(()=>{
-	fetch(`/user/task/${todo._id}`,{
-		method : "put",
-		headers : {
-			"Content-Type" : "application/json; charset=utf-8" 
-		},
-		body : JSON.stringify({task : taskUserInput.val()})
-	}).then((response)=>{
-		console.log(response);
-		return response.json();
-	}).then((data)=>{
-		console.log(data);
-		display.empty();
-		getTodos();
-		resetTodosInput();
-		displayMessage(true,"Edit Successful");
-	});
+    res.render('index.ejs', {
+        projectName: "Todo",
+        pageTitle: "Sign In",
+        userArray: users
+    });
 });
-```
 
-## Locally data store in browser
+// For loop to iterate array of data
+<table>
+	<% for(var i = 0; i < userArray.length; i++){ %>
+		<tr>
+			<td>
+				<div class="container">
+					<div class="row" style="color: aliceblue;">
+						<div class="col-md-4" style="margin-left: 9px;">
+							<%= userArray[i].email %>
+						</div>
+						<div class="col-md-4" style="margin-left:30%;">
+							<%= userArray[i].name %>
+						</div>
+						<div class="col-md-4"></div>
+					</div>
+				</div>
+			</td>
+			<!-- <td><%= userArray[i].name %></td> -->
+		</tr>
+	<% } %>
+</table>
 
-The localStorage and sessionStorage properties allow to save key/value pairs in a web browser.
+// Use of conditional statement in ejs file
+<p style="color: red;">
+    <% if (failMsg !== " ") { %>
+        <%= failMsg %>
+    <% } %>
+</p>
 
-The localStorage object stores data with no expiration date. The data will not be deleted when the browser is closed, and will be available the next day, week, or year.
+3.
+router.get('/login',checkNotAuthenticated,(req,res)=>{
+    getAllUser();
+    res.render('login.ejs');
+});
 
-The localStorage property is read-only.
+<div id="register-link" class="text-right">
+	<a href="/user/login" style="color:#164072 !important">Already Registered?</a>
+</div>
 
-Tip: Also look at the sessionStorage property which stores data for one session (data is lost when the browser tab is closed).
 
-localStorage:
+4.
+<a href="/user/profile" class="textColor"><%= name %></a>
 
-```
-<!DOCTYPE html>
-<html>
-<body>
+// Route. it will navigate you to profile page
+router.get('/profile', checkAuthenticated,(req,res)=>{
+    res.render('profile.ejs',{name: req.user.name, email: req.user.email, address: req.user.address});
+});
 
-<div id="result"></div>
+5.
+// Setup ejs: installl ejs and write following in app.js files to get access of ejs tamplate & css/js file
+app.set('view-engine','ejs');
 
-<script>
-// Check browser support
-if (typeof(Storage) !== "undefined") {
-  // Store
-  localStorage.setItem("lastname", "Smith");
-  // Retrieve
-  document.getElementById("result").innerHTML = localStorage.getItem("lastname");
-} else {
-  document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-}
-</script>
+//middleware
+app.use(express.json());
+app.use(express.static(__dirname + '/'));
+app.use(express.urlencoded({extended: false}));
+app.use('/user', usersRoute);
+app.use('/euser', eUsersRoutes);
 
-</body>
-</html>
-```
+6.
+// Add css file in ejs template. keep file in: root/css/bootstrap.min.css
+<link rel="stylesheet" href="../css/bootstrap.min.css">
 
-sessionStorage:
+// Add js file in ejs template. keep file in: root/js/main.js
+<script src="../js/main.js"></script>
 
-```
-<!DOCTYPE html>
-<html>
-<body>
+7.
+Install specific version of package
+	npm install mongoose@6.0.4
+*TextField undefined error removed by installing 5.9.17 version of mongoose
+	npm install mongoose@5.9.17
 
-<div id="result"></div>
-
-<script>
-// Check browser support
-if (typeof(Storage) !== "undefined") {
-  // Store
-  sessionStorage.setItem("lastname", "Smith");
-  // Retrieve
-  document.getElementById("result").innerHTML = sessionStorage.getItem("lastname");
-} else {
-  document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-}
-</script>
-
-</body>
-</html>
-```
 
 
 
