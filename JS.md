@@ -124,6 +124,19 @@ const displayTodos = (data)=>{
 		deleteTodo(todo,ids.listItemID,ids.deleteID);
 	});
 }
+```
+
+- Data get from route and show in ejs using fetch api
+```
+//get all task of specific user
+router.get('/taskWithId',checkAuthenticated, async (req, res) => {
+    try {
+        const todo = await Task.find( { "uid": req.user.id } );
+        res.json(todo);
+    } catch (error) {
+        res.json({ message: error });
+    }
+});
 
 // fetch method to get data from server. call 'displayTodos(data);' function after getting data.
 const getTodos = ()=>{
@@ -135,6 +148,27 @@ const getTodos = ()=>{
 	});
 }
 getTodos(); // call functuon in <script>
+```
+
+- Update route with fetch api
+```
+//update a task & return updated data
+router.put('/task/:taskId', async (req, res) => {
+    try {
+        const updateTodo = await Task.updateOne(
+            { _id: req.params.taskId },
+            { $set: { task: req.body.task } },{returnOriginal : true},(err,result)=>{
+                if(err)
+                    console.log(err)
+                else{
+                    res.json(result);
+                }      
+            });
+        // res.send(updateTodo);
+    } catch (error) {
+        res.send(error);
+    }
+});
 
 
 // fetch method for edit data
@@ -161,6 +195,21 @@ const editTodo = (todo,todoID,editID)=>{
 		});
 	});
 }
+```
+
+- Delete route with fetch api
+```
+//Delete a Task
+router.delete('/task/:taskId',checkAuthenticated, async (req, res) => {
+    try {
+        const removeTask = await Task.deleteOne(
+            { _id: req.params.taskId }
+        );
+        res.send(removeTask);
+    } catch (error) {
+        res.send({ message: error });
+    }
+});
 
 
 // fetch method for delete data
