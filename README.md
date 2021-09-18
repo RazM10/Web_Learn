@@ -5,6 +5,7 @@
 [Js](https://github.com/RazM10/Web_Learn/blob/master/JS.md)
 
 ## Table of contents
+- [Status code](#status-code)
 - [Node js intallation instructions](#node-js-intallation-instructions)
 - [npm instuction for initialize project](#npm-instuction-for-initialize-project)
 - [MongoDb intallation instructions](#mongoDb-intallation-instructions)
@@ -12,6 +13,30 @@
 - [Jwt token for login](#jwt-token-for-login)
 - [Folder traverse](#folder-traverse)
 - [Data pass from ui to server](#data-pass-from-ui-to-server)
+
+## Status code
+
+```
+// return from node js server
+return res.status(403).json("Username incorrect");
+return res.status(403).json('token': token, 'msg': "Username incorrect");
+
+// check on mobile font-end
+if(response.StatusCode == 200)
+  print(response.body);
+  
+// codes are
+Informational responses ( 100 – 199 )
+Successful responses ( 200 – 299 )
+Redirects ( 300 – 399 )
+Client errors ( 400 – 499 )
+Server errors ( 500 – 599 )
+
+// collect from project
+500 -> Error in retrieving data
+403 -> Password is incorrect / username is incorrect / save not ok
+200-> Save ok
+```
 
 ## Node js intallation instructions
 
