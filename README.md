@@ -34,8 +34,8 @@ Server errors ( 500 – 599 )
 
 // collect from project
 500 -> Error in retrieving data
-403 -> Password is incorrect / username is incorrect / save not ok
-200-> Save ok
+403 -> Password is incorrect / username is incorrect / save not ok / 404 not found
+200-> Save ok / 200 0k / success / 201 Added
 ```
 
 ## Node js intallation instructions
