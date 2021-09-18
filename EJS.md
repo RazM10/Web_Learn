@@ -423,6 +423,38 @@ npm install mongoose@5.9.17
 
 ## Token pass with header
 
+```
+// artical link: https://stackoverflow.com/questions/57903897/how-to-send-token-in-header-from-viewejs
+
+// save token in client side in web
+<script>
+    localStorage.setItem('token', "<%= JSON.stringify(token) %>"); // <- setup token into localStorage, (but i think it's not good place for that, and would be better get token with another authorization request)
+</script>
+
+// pass token with anchor-tag to server
+<a href="/user/home?authorization=Bearer "+data>Home 
+	 <span class="sr-only">(current)</span>
+</a>
+
+// get token from local storage, and send it to server with post route in fetch
+var jwtToken = localStorage.getItem('token')
+var headers = {}
+
+if(jwtToken) {
+	headers['Authorization'] = 'Bearer ' + jwtToken
+}
+
+return fetch(url, {
+	method: 'POST', // *GET, POST, PUT, DELETE, etc.
+	mode: 'cors',
+	headers: headers
+})
+
+// received token and slice it from 'Bearer ..token..'. so, slice it with 7.
+let token = req.get('Authorization');
+token = token.slice(7, token.length);
+```
+
 - Receive
 ```
 // let token = req.headers["authorization"];
