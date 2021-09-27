@@ -5,8 +5,150 @@
 [Html_Css](https://github.com/RazM10/Web_Learn/blob/master/HTML_CSS.md)
 
 ## Table of contents
+- [Jquery code write](#jquery-code-write)
+- [Get id and class](#get-id-and-class)
+- [Hide show of element](#hide-show-of-element)
+- [Function style](#function-style)
+- [Console log](#console-log)
+- [Show in html page](#show-in-html-page)
+- [Timer to wait](#timer-to-wait)
 - [Add litener for adding and removing class](#add-litener-for-adding-and-removing-class)
 - [Using jquery with fetch api](#using-jquery-with-fetch-api)
+
+## Jquery code write
+
+```
+$(document).ready(()=>{...});
+
+// or
+$(document).ready(function() {...});
+```
+
+## Get id and class
+
+- Id
+```
+const message = $("#message");
+var v = message.val();
+
+// or
+var v = $("#name").val();
+
+// or with pure js
+let myInput = document.getElementById('myInput');
+var v = myInput.value;
+```
+
+- Class
+```
+const someInput = $(".some-input");
+
+// or with pure js
+var hamburger = document.querySelector(".hamburger");
+```
+
+## Hide show of element
+
+```
+// hide
+message.hide();
+
+// show
+message.html(msg);
+message.show();
+```
+
+## Console log
+
+```
+var v = $("#name").val();
+console.log('value is:'+v);
+```
+
+## Show in html page
+
+```
+const message = $("#message");
+message.html(msg);
+```
+
+## Function style
+
+```
+function doneTyping () {
+  //do something
+}
+
+$input.on('keyup', function () {
+  // do something
+  doneTyping();
+});
+
+$('#myInput').keyup(function(){
+  if ($('#myInput').val()) {
+	doneTyping();
+  }
+});
+
+let myInput = document.getElementById('myInput');
+myInput.addEventListener('keyup', () => {
+    if (myInput.value) {
+      doneTyping();
+    }
+});
+
+
+// fantastic function
+1.
+var delay = (function () {
+    var timer = 0;
+    return function (callback, ms) {
+        clearTimeout(timer);
+        timer = setTimeout(callback, ms);
+    };
+})()
+2.
+let $filter = $('#item-filter');
+$filter.on('keydown', function () {
+    delay(function () {            
+        console.log('this will hit, once user has not typed for 1 second');            
+    }, 1000);
+});
+// Another with 3 parameters 
+1.
+var delayUserInput = (function () {
+    var timeoutHandles = {};    
+    return function (id, callback, ms) {        
+        if (timeoutHandles[id]) {
+            clearTimeout(timeoutHandles[id]);
+        }
+
+        timeoutHandles[id] = setTimeout(callback, ms);             
+    };
+})();
+2.
+delayUserInput('yourID', function () {
+  //do some stuff
+}, 1000);
+```
+
+## Timer to wait
+
+```
+var timer;
+var timeout = 3000;
+			
+$('#name').keyup(function(){
+	clearTimeout(timer);
+	if ($('#name').val) {
+		timer = setTimeout(function(){
+			var v = $("#name").val();
+			console.log('value is:'+v);
+			// $("#out").html(v);
+		}, timeout);
+	}
+});
+```
 
 ## Add litener for adding and removing class
 
