@@ -308,3 +308,76 @@ app.post('/users', (req, res) => name: req.body.name )
 // when data send by url parameter
 app.put('/users/:userId, (req, res) => name: req.params.userId )
 ```
+
+## 
+
+- Server
+```
+// status code send to client
+return res.status(500).json({ msg: err });
+// pass data to client
+return res.json({
+  data: result,
+  username: req.params.username,
+});
+// data received by body from client
+const user = new User({
+  username: req.body.username,
+  password: req.body.password,
+  email: req.body.email,
+});
+// data received by parameter from client
+router.route("/delete/:username").delete(
+  username: req.params.username,
+)
+```
+
+- Client: Mobile
+```
+// get statusCode & data from server
+var response = await http.get(
+  url,
+  headers: {"Authorization": "Bearer $token"},
+);
+
+if (response.statusCode == 200 || response.statusCode == 201) { // status code
+  log.i(response.body);
+
+  return json.decode(response.body); // data
+}
+
+// pass data to server
+1.
+Map<String, String> data = {
+  "username": _usernameController.text,
+  "password": _passwordController.text,
+};
+var response =
+	await networkHandler.post("/user/login", data);
+if (response.statusCode == 200 || response.statusCode == 201) {
+  Map<String, dynamic> output = json.decode(response.body);
+  print(output["token"]);
+}
+
+2.
+var response = await http.post(
+  url,
+  headers: {
+	"Content-type": "application/json",
+	"Authorization": "Bearer $token"
+  },
+  body: json.encode(body),
+);
+return response;
+
+// patch requests
+var response = await http.patch(
+  url,
+  headers: {
+	"Content-type": "application/json",
+	"Authorization": "Bearer $token"
+  },
+  body: json.encode(body),
+);
+```
+
