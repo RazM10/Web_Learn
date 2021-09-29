@@ -330,6 +330,8 @@ const user = new User({
 router.route("/delete/:username").delete(
   username: req.params.username,
 )
+// token get from headers
+let token = req.get('Authorization');
 ```
 
 - Client: Mobile
@@ -379,5 +381,22 @@ var response = await http.patch(
   },
   body: json.encode(body),
 );
+```
+
+- Client: web
+```
+fetch(`/user/task/${todo._id}`,{
+	method : "put",
+	headers : {
+		"Content-Type" : "application/json; charset=utf-8" 
+	},
+	body : JSON.stringify({task : taskUserInput.val()})
+}).then((response)=>{
+	console.log(response); // here you can check status code
+	return response.json();
+}).then((data)=>{
+	console.log(data.task);
+	console.log(data.createdAt);
+});
 ```
 
