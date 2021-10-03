@@ -8,6 +8,7 @@
 - [Jquery code write](#jquery-code-write)
 - [Get id and class](#get-id-and-class)
 - [Hide show of element](#hide-show-of-element)
+- [Add css](#add-css)
 - [Function style](#function-style)
 - [Console log](#console-log)
 - [Show in html page](#show-in-html-page)
@@ -56,6 +57,17 @@ message.hide();
 // show
 message.html(msg);
 message.show();
+```
+
+# Add css
+
+```
+$("#password").css({"margin-top": "30px"});
+
+//single css attributes
+$("p").css("background-color", "yellow");
+// multiple css attributes
+$("p").css({"background-color": "yellow", "font-size": "200%"});
 ```
 
 ## Console log
