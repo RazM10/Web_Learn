@@ -9,6 +9,7 @@
 - [Get id and class](#get-id-and-class)
 - [Hide show of element](#hide-show-of-element)
 - [Add css](#add-css)
+- [Print a page](#print-a-page);
 - [Function style](#function-style)
 - [Console log](#console-log)
 - [Show in html page](#show-in-html-page)
@@ -68,6 +69,12 @@ $("#password").css({"margin-top": "30px"});
 $("p").css("background-color", "yellow");
 // multiple css attributes
 $("p").css({"background-color": "yellow", "font-size": "200%"});
+```
+
+## Print a page
+
+```
+print();
 ```
 
 ## Console log
@@ -382,6 +389,7 @@ const deleteTodo = (todo,listItemID,deleteID)=>{
 }
 
 // fetch method for post form data
+// e.preventDefault(); is important. used for preventing from reloading page, when form.submit() clicked(***)
 form.submit((e)=>{
 	console.log("1.i am in form");
 	e.preventDefault();
