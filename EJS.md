@@ -10,6 +10,7 @@
 - [Setup Ejs](#setup-ejs)
 - [Add css and js files](#add-css-add-js-files)
 - [Use of anchor tag](#use-of-anchor-tag)
+- [Redirect to another page](#redirect-to-another-page)
 - [Use of for loop-if else statement and data pass](#use-of-for-loop-if-else-statement-and-data-pass)
 - [Folder traverse](#folder-traverse)
 - [Data pass from ui to server](#data-pass-from-ui-to-server)
@@ -253,7 +254,7 @@ router.get('/', async (req,res)=>{
 </p>
 ```
 
-Data show in js script console
+- Data show in js script console
 
 ```
 <script> 
@@ -261,6 +262,31 @@ Data show in js script console
     console.log("<%= projectName %>");
     // console.log("<%= JSON.stringify(projectName) %>");
 </script>
+```
+
+- Redirect to another page
+```
+<% if (yourBoolean) { %>
+  <script> document.location.href = '/your-redirect' </script>
+<% } %>
+```
+
+## Redirect to another page
+
+```
+// to google
+//window.location.href = "google.com"
+
+// by route
+// document.location.href = '/user/'; 
+window.location.href = "/user/";
+```
+
+- Another
+```
+<% if (yourBoolean) { %>
+  <script> document.location.href = '/your-redirect' </script>
+<% } %>
 ```
 
 ## Form data post as put-delete

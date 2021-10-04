@@ -9,7 +9,8 @@
 - [Get id and class](#get-id-and-class)
 - [Hide show of element](#hide-show-of-element)
 - [Add css](#add-css)
-- [Print a page](#print-a-page);
+- [Print a page](#print-a-page)
+- [Redirect to another page](#redirect-to-another-page)
 - [Function style](#function-style)
 - [Console log](#console-log)
 - [Show in html page](#show-in-html-page)
@@ -75,6 +76,17 @@ $("p").css({"background-color": "yellow", "font-size": "200%"});
 
 ```
 print();
+```
+
+## Redirect to another page
+
+```
+// to google
+//window.location.href = "google.com"
+
+// by route
+// document.location.href = '/user/'; 
+window.location.href = "/user/";
 ```
 
 ## Console log
