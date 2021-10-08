@@ -228,5 +228,20 @@ overflow: hidden;
 // or when one element go outside from border.
 ```
 
+## Float
+
+```
+<div style="background:yellow; width:100%;">
+	<div style="background:red; width:50%; float:left;">
+    	<h5>Hello</h5>
+    </div>
+    
+    <div style="background:blue; width:50%; float:right;">
+    	<h5>Hello</h5>
+    </div>
+</div>
+```
+<img height="380px" src="https://github.com/RazM10/Web_Learn/blob/master/images/float.PNG">
+
 
 
