@@ -241,7 +241,7 @@ overflow: hidden;
     </div>
 </div>
 ```
-<img height="380px" src="https://github.com/RazM10/Web_Learn/blob/master/images/float.PNG">
+<img height="150px" src="https://github.com/RazM10/Web_Learn/blob/master/images/float.PNG">
 
 
 
