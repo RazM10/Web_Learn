@@ -6,6 +6,9 @@
 
 ## Table of contents
 - [Menu page finding](#menu-page-finding)
+- [Float](#float)
+- [Flex](#flex)
+- [Position](#position)
 
 ## Menu page finding
 
@@ -243,5 +246,57 @@ overflow: hidden;
 ```
 <img height="150px" src="https://github.com/RazM10/Web_Learn/blob/master/images/float.PNG">
 
+## Flex
+
+```
+diplay: flex;
+
+flex-direction: row; // for row or column
+
+flex-wrap: wrap; // working like wrapping
+
+justify-content: space-around; // like mainAxisAlignment of row. column->mainAxisALignment
+
+align-items: center; // like crossAxisAlignment of row. column->crossAxisAlignment
+
+align-self: flex-end; // to override the parent crossAxisAliment property by the applied child in row
+
+align-content: center; // only for using on multi-line flex-box container, to keep all container at start/end/center
+			// add a height to flex-box container to see the result
+
+// working on sigle div of flex container
+flex-shrink: 0; // work like fixed size & it will not shrink.
+
+flex-grow: 1; // work like Expanded(flex: 1;) & coved all empty spaces by the applied item.
+
+align-self: flex-end; // to override the parent crossAxisAliment property by the applied child in row
+
+order: 1; // set serial to child of parent
+```
+
+- align-items: center; (crossAxisAlignment of row)
+
+<img height="380px" src="https://github.com/RazM10/Web_Learn/blob/master/images/flex_1.PNG">
+
+- align-content: flex-end; (can see the result, when used big height)
+
+<img height="380px" src="https://github.com/RazM10/Web_Learn/blob/master/images/flex_2.PNG">
+
+- align-self: flex-end; (apply on child)
+
+<img height="380px" src="https://github.com/RazM10/Web_Learn/blob/master/images/flex_3.PNG">
+
+## Position
+
+- static: default page position(goto inspaction, then computed tab, then search for position). top, left, right, bottom can't apply on it.
+- relative: top, left, right, bottom can apply on it. and it take distance from main body.
+- absolute: div_1(relative) > div_2(absolute). div_2 take distance from div_1 not form main body. div_1 take from main body.
+- sticky: the applied child will be kept fixed on top, when this child is reached to top.
+
+<img height="380px" src="https://github.com/RazM10/Web_Learn/blob/master/images/position_1.PNG">
+
+- Here 'One' is sticky, top will keep it fixed on top, when it reach to top. otherwise, it will on it's own place.
+
+<img height="380px" src="https://github.com/RazM10/Web_Learn/blob/master/images/position_2.PNG">
 
 
