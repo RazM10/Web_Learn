@@ -13,6 +13,10 @@
 - [Jwt token for login](#jwt-token-for-login)
 - [Folder traverse](#folder-traverse)
 - [Data pass from ui to server](#data-pass-from-ui-to-server)
+- [Json stringify](#json-stringify)
+- [Undefined type checking](#undefined-type-checking)
+- [Passing Multiple route params](#passing-multiple-route-params)
+- [Install specific version of package](#install-specific-version-of-package)
 
 ## Status code
 
@@ -84,7 +88,7 @@ const express = require('express');
 const app = express();
 
 
-// parse requests of content-type - application/x-www-form-urlencoded
+// parse requests of content-type - application/x-www-form-urlencoded. important for get data in server, when form data post from ejs page.
 app.use(express.urlencoded({ extended: true }));
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -402,4 +406,205 @@ fetch(`/user/task/${todo._id}`,{
 	console.log(data.createdAt);
 });
 ```
+
+## Json stringify
+
+-  json data convert to string to sent data to server
+
+```
+const obj = {name: "John", age: 30, city: "New York"};
+const myJSON = JSON.stringify(obj); // {"name":"John","age":30,"city":"New York"}
+```
+
+## Undefined type checking
+
+```
+if(typeof token === 'undefined'){
+  res.redirect('/user/login');
+  return;
+}
+```
+
+## Passing multiple route params
+
+```
+// passing two params with link
+http://localhost:3000/user/home/no/name
+
+// route
+router.get('/home/:active/:name', multiParamsRoute);
+
+// getting value in routes
+req.params.active
+req.params.name
+```
+
+## Install specific version of package
+
+```
+npm install mongoose@6.0.4
+```
+
+- TextField undefined error removed by installing 5.9.17 version of mongoose
+
+```
+npm install mongoose@5.9.17
+```
+
+## Multer for upload image
+
+- install
+```
+npm install multer
+```
+
+- model (Upload.model.js)
+```
+const mongoose=require('mongoose');
+
+const UploadSchema=mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    img: {
+        type: String,
+        default: "",
+    },
+});
+
+module.exports=mongoose.model('Upload',UploadSchema);
+```
+
+- routes (upload.routes.js)
+```
+const express = require('express');
+const router = express.Router();
+const Upload = require('../models/Upload');
+
+const multer = require("multer");
+const path = require("path");
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + ".jpg");
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype == "image/jpeg" || file.mimetype == "image/png") {
+    cb(null, true);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 6,
+  },
+  fileFilter: fileFilter,
+});
+
+router.post('/add', (req, res) => {
+    const upload = new Upload({
+        name: req.body.name
+    });
+
+    try {
+        const savedUpload = upload.save();
+        res.json(savedUpload);
+    } catch (error) {
+        res.json({ message: error });
+    }
+});
+
+router.get('/getall', async (req, res) => {
+    try {
+        const uploads = await Upload.find();
+        res.json(uploads);
+    } catch (error) {
+        res.json({ message: error });
+    }
+    // res.send('We are on users home');
+});
+
+router.patch("/add/image/:id", upload.single("img"), (req, res) => {
+  Upload.findOneAndUpdate(
+    { _id: req.params.id },
+    {
+      $set: {
+        img: req.file.path,
+      },
+    },
+    { new: true },
+    (err, upload) => {
+      if (err) return res.status(500).send(err);
+      const response = {
+        message: "image added successfully updated",
+        data: upload,
+      };
+      return res.status(200).send(response);
+    }
+  );
+});
+
+module.exports = router;
+```
+
+- app.js
+```
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+
+const usersRoute = require('./routes/users');
+const uploadRoute = require('./routes/upload');
+
+const DB_CONNECTION_URL=mongodb://localhost:27017/userDB;
+//mongoose
+mongoose.connect(DB_CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }, function (err, db) {
+    if (err) throw err;
+    else console.log('Connected to DB');
+});
+
+// to show the image in web browser from uploads folder by uploaded path
+app.use('/uploads', express.static("uploads"));
+
+//middleware
+app.use(express.json());
+
+//import routes
+app.use('/users', usersRoute);
+app.use('/upload', uploadRoute);
+
+//routes
+app.get('/', (req, res) => {
+    console.log('We are on Home');
+    res.send('We are on Home');
+});
+
+app.listen(3000);
+```
+
+- packages
+```
+"body-parser": "^1.19.0",
+"dotenv": "^8.2.0",
+"express": "^4.17.1",
+"mongoose": "^5.9.17",
+"multer": "^1.4.3",
+"nodemon": "^2.0.2"
+```
+
+
+
+
+
+
+
+
+
+
 
