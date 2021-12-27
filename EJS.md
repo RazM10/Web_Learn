@@ -574,4 +574,141 @@ if (typeof(Storage) !== "undefined") {
 ```
 
 
+## A simple process
+
+- package.json
+```
+"scripts": {
+	"test": "npm start",
+	"start": "nodemon server.js" // run: npm start
+},
+"dependencies": {
+	"axios": "^0.24.0",
+	"ejs": "^3.1.6",
+	"express": "^4.17.2",
+	"mongoose": "^5.10.11"
+},
+"devDependencies": {
+	"nodemon": "^2.0.15"
+}
+```
+
+- server.js
+```
+const express = require('express');
+const path = require('path');
+
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+
+// parse request to body-parser
+app.use(express.json());
+
+// set view engine
+app.set("view engine", "ejs")
+
+// load assets
+app.use(express.static(__dirname + '/assets/'));
+// <link rel="stylesheet" href="/css/style.css">
+// <script src="/js/index.js"></script>
+
+app.get('/', (req,res) => {
+    res.send("Hello from server");
+});
+
+app.use('/user', require('./server/routers/user.route'));
+
+app.listen(PORT, ()=> { console.log(`Server is running on http://localhost:${PORT}`)});
+```
+
+- server/controller/user.controller
+```
+exports.add = (req, res) => {
+    res.redirect('/user');
+}
+
+exports.find = (req, res) => {
+    res.status(200).json({token: "token", msg: "msg"});
+}
+```
+
+- server/services/render
+```
+const axios = require('axios');
+const url = "http://localhost:3000";
+
+exports.add_user = (req, res) =>{
+    res.render('add_user');
+}
+
+exports.home = (req, res) => {
+    // Make a get request to /api/users
+    axios.get(url+'/user/api/users')
+        .then(function(response){
+            // res.render('index', { users : response.data });
+            res.render('index', { users : response });
+        })
+        .catch(err =>{
+            res.send(err);
+        })
+}
+```
+
+- server/routers/user.route
+```
+const express = require('express');
+const route = express.Router();
+
+const services = require('../services/render');
+const controller = require('../controller/user.controller');
+
+route.get('/', services.add_user);
+route.get('/home/', services.home);
+
+// API
+route.post('/api/users', controller.add);
+route.get('/api/users', controller.find);
+
+module.exports = route;
+```
+
+- views/include/_header.ejs or 
+```
+<link rel="stylesheet" href="/css/style.css">
+or 
+<script src="/js/index.js"></script>
+```
+
+- views/index.ejs
+```
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<tbody>
+	<%- include('include/_show') %>
+</tbody>
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->
+```
+
+```
+<script> 
+    console.log("hello")
+    console.log("<%= users.status %>");
+    console.log("<%= users.data.token %>");
+</script>
+```
+
+
+
+
+
+
+
+
+
 

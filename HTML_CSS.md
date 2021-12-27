@@ -9,6 +9,8 @@
 - [Float](#float)
 - [Flex](#flex)
 - [Position](#position)
+- [Ancor tag](#ancor-tag)
+- [css variable](#css-variable)
 
 ## Menu page finding
 
@@ -143,6 +145,15 @@ width: calc(100% / 4 - 15px);
 ```
 margin: top right bottom left;
 margin: vertical horizontal;
+```
+
+- border
+```
+width: calc(100% / 3 - 15px);
+border-color: #d0d7de;
+border-style: solid;
+border-width: 1px;
+border-radius: 6px;
 ```
 
 - border-radius
@@ -298,5 +309,38 @@ order: 1; // set serial to child of parent
 - Here 'One' is sticky, top will keep it fixed on top, when it reach to top. otherwise, it will on it's own place.
 
 <img height="380px" src="https://github.com/RazM10/Web_Learn/blob/master/images/position_2.PNG">
+
+## Ancor tag
+
+- can set target="_blank/_self" to open page in new tab or current page
+```
+<a href="#" class="btn btn--bg" target="_blank">Live Link</a>
+```
+
+## css variable
+
+```
+:root {
+  --blue: #1e90ff;
+  --white: #ffffff; 
+}
+
+body {
+  background-color: var(--blue);
+}
+
+h2 {
+  border-bottom: 2px solid var(--blue);
+}
+```
+
+
+
+
+
+
+
+
+
 
 
