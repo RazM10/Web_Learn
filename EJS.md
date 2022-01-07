@@ -703,6 +703,44 @@ or
 </script>
 ```
 
+- server/database/connection.js
+```
+const mongoose = require('mongoose');
+
+// const DB_CONNECTION_URL="mongodb+srv://jack:jack@cluster0-khwka.mongodb.net/test?retryWrites=true&w=majority";
+var DB_CONNECTION_URL="mongodb://localhost:27017/shopDB";
+
+const connectDB = async () => {
+    try{
+        // mongodb connection string
+        const con = await mongoose.connect(DB_CONNECTION_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useFindAndModify: false,
+            useCreateIndex: true
+        })
+
+        console.log(`MongoDB connected : ${con.connection.host}`);
+    }catch(err){
+        console.log(err);
+        process.exit(1);
+    }
+}
+
+module.exports = connectDB
+```
+
+- server.js
+```
+// mongodb connection
+const connectDB = require('./server/database/connection');
+connectDB();
+```
+
+
+
+
+
 
 
 
