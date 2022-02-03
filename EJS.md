@@ -696,6 +696,26 @@ or
 ```
 
 ```
+<% for(var i = 0; i < users.length; i++) { %>
+    <tr>
+        <td><%= i + 1 %></td>
+        <td><%= users[i].name %></td>
+        <td><%= users[i].email %></td>
+        <td><%= users[i].gender %></td>
+        <td><%= users[i].status %></td>
+        <td>
+            <a href="/user/update-user?id=<%= users[i]._id%>" class="btn border-shadow update">
+                <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+            </a>
+            <a class="btn border-shadow delete" data-id=<%= users[i]._id%> >
+                <span class="text-gradient"><i class="fas fa-times"></i></span>
+            </a>
+        </td>
+    </tr>
+<% } %>
+```
+
+```
 <script> 
     console.log("hello")
     console.log("<%= users.status %>");
