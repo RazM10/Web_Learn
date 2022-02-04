@@ -720,6 +720,10 @@ or
     console.log("hello")
     console.log("<%= users.status %>");
     console.log("<%= users.data.token %>");
+	
+	// also taking object in a variable and can use it
+	var locationObjArray =  <%- JSON.stringify(locations) %>;
+	console.log("Beta: "+locationObjArray.length);
 </script>
 ```
 
